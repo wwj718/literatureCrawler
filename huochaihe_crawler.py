@@ -79,6 +79,27 @@ class Handler(BaseHandler):
         pic_url = music_box.find(".in_img_box img").attr("src")
         music_url = music_box.find("source").attr("src")
         music_name = music_box.find(".in_bigtxt.f18.fblue").text()
+        up_count = music_box.find(".in_num_box01").text()
+        sharing_count =  music_box.find(".in_num_box02").text()
+        #print pic_url,date_text,type
+        result = {
+            "date" : date_text,
+            "data_type" : type,
+            "up_count":up_count,
+            "sharing_count":sharing_count,
+            "data" :  {"pic_url":pic_url,
+                       "music_url":music_url,
+                       "music_name":music_name
+                       }
+            }   
+        print result
+        return result 
+
+    def save_poem_box(self,poem_box,date_text):
+        type = "poem_box"
+        pic_url = music_box.find(".in_img_box img").attr("src")
+        music_url = music_box.find("source").attr("src")
+        music_name = music_box.find(".in_bigtxt.f18.fblue").text()
         #print pic_url,date_text,type
         result = {
             "date" : date_text,
@@ -90,4 +111,20 @@ class Handler(BaseHandler):
             }   
         print result
         return result 
-    
+
+    def save_article_box(self,article_box,date_text):
+        type = "article_box"
+        pic_url = music_box.find(".in_img_box img").attr("src")
+        music_url = music_box.find("source").attr("src")
+        music_name = music_box.find(".in_bigtxt.f18.fblue").text()
+        #print pic_url,date_text,type
+        result = {
+            "date" : date_text,
+            "data_type" : type,
+            "data" :  {"pic_url":pic_url,
+                       "music_url":music_url,
+                       "music_name":music_name
+                       }
+            }   
+        print result
+        return result 
