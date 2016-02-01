@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
@@ -65,19 +66,28 @@ class Handler(BaseHandler):
             #box_type
             #eq0 = date_content.eq(0).text()
             #print eq0
-            #break
+            break
             
     def save_data(self,date_data):
         #分门别类来存储
         (music_box,poem_box,article_box,date_text)= date_data
-        self.save_music_box(music_box)
+        self.save_music_box(music_box,date_text)
                     
     
-    def save_music_box(self,music_box):
+    def save_music_box(self,music_box,date_text):
+        type = "music_box"
         pic_url = music_box.find(".in_img_box img").attr("src")
-        print pic_url
-        return {
-            "pic_url" =  pic_url
-            }      
-    
+        music_url = music_box.find("source").attr("src")
+        music_name = music_box.find(".in_bigtxt.f18.fblue").text()
+        #print pic_url,date_text,type
+        result = {
+            "date" : date_text,
+            "data_type" : type,
+            "data" :  {"pic_url":pic_url,
+                       "music_url":music_url,
+                       "music_name":music_name
+                       }
+            }   
+        print result
+        return result 
     
